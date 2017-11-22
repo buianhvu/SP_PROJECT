@@ -6,7 +6,7 @@
             <?php 
             if (isset($_SESSION['username'])){
                 echo $_SESSION['username'].' ,';
-                echo "<a href='index.php?controller=logout&action=handle'>Logout</a>";
+                echo "<a href='index.php?controller=logout&action=logout'>Logout</a>";
             }
             ?>
         </header>

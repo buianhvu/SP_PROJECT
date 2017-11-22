@@ -8,4 +8,5 @@ if(isset($_GET['controller']) && isset($_GET['action'])) {
     $controller = 'home';
     $action = 'display';   
 }
+//general layout
 require_once('view/layout.php');
