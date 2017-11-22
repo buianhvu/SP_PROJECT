@@ -1,6 +1,6 @@
 <?php
-
-class Account {
+include 'model_interfaces/observer.php';
+class Account implements ObserverInterface{
 
     private $username;
     private $password;
@@ -49,6 +49,12 @@ class Account {
     ");
             return $addmember;
     }
+
+    public function updateMessage($message) {
+        $update_mess = mysql_querry("UPDATE member SET message = '{$message}' WHERE username = '{$this->username}'");
+        return $update_mess;
+    }
+
 }
 
 ?>

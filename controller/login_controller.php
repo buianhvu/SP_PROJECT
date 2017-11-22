@@ -1,8 +1,7 @@
 <?php
 
 header('Content-Type: text/html; charset=UTF-8');
-include('connect.php');
-
+Connection::getOnlyConnection()->connect();
 class LoginController {
 
     private $username;
