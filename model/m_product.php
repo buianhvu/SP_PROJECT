@@ -2,7 +2,7 @@
 if(!isset($_SESSION)) {
     session_start();
 }
-require_once "DBHelper/DBHelper.php";
+require_once(__DIR__.'/../Helper/DBHelper.php');
 class M_Product extends DBHelper {
     private $product_id;
     private $product_name;

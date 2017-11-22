@@ -27,6 +27,9 @@ var app = window.app || {},
     };
 
     app.createProducts = function () {
+        
+      
+        
         var productos = [
             {
                 id: 1,
@@ -55,15 +58,14 @@ var app = window.app || {},
             {
                 id: 4,
                 name: 'Libertad 5oz',
-                img: 'view/images/18763427_660063167521006_1125890572_n.png',
+                img: 'view/images/headphone.jpg',
                 price: 80.00,
                 desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                stock: 0
+                stock: 2
             }
         ],
                 wrapper = $('.productosWrapper'),
                 contenido = '';
-
         for (var i = 0; i < productos.length; i++) {
 
             if (productos[i].stock > 0) {
@@ -81,7 +83,34 @@ var app = window.app || {},
             }
 
         }
+        $.ajax({
+            type: "POST",
+            url : "controller/AjaxGetProduct.php",
+            success: function(response){
+                console.log(JSON.parse(response));
+                var product = JSON.parse(response);
+                for (var i = 0; i < product.length; i++) {
 
+
+                contenido += '<div class="coin-wrapper">';
+                contenido += '		<img src="' + product[i].img + '" alt="' + product[i].name + '">';
+                contenido += '		<span class="large-12 columns product-details">';
+                contenido += '			<h3>' + product[i].name + ' <span class="price">$ ' + product[i].price + ' USD</span></h3>';
+                contenido += '			<h3>Quality: <span class="stock">' + product[i].stock + '</span></h3>';
+                contenido += '		</span>';
+                contenido += '		<a class="large-12 columns btn submit ladda-button prod-' + product[i].id + '" data-style="slide-right" onclick="app.addtoCart(' + product[i].id + ');">Add to cart</a>';
+                contenido += '		<div class="clearfix"></div>';
+                contenido += '</div>';
+
+            
+
+                }
+                
+            },
+            error: function(){
+                console.log("Fail vcl");
+            }
+        });
         wrapper.html(contenido);
 
         localStorage.setItem('productos', JSON.stringify(productos));
@@ -103,13 +132,13 @@ var app = window.app || {},
                         l.stop();
                     }, 2000);
                 } else {
-                    alert('Solo se permiten cantidades mayores a cero');
+                    alert('Only allow numbers greater than 0');
                 }
             } else {
-                alert('Oops! algo malo ocurrió, inténtalo de nuevo más tarde');
+                alert('Oops! Something\'s wrong. Please try again later.');
             }
         } else {
-            alert('No se pueden añadir más de este producto');
+            alert('Product number has reached its limit');
         }
     };
 
@@ -122,7 +151,7 @@ var app = window.app || {},
             if (curProd.cant < available) {
                 curProd.cant = parseInt(curProd.cant + cant);
             } else {
-                alert('No se pueden añadir más de este producto');
+                alert('Product number has reached its limit');
             }
 
         } else {
