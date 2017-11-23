@@ -56,6 +56,7 @@ class LoginController {
         //Save the username onto the session
         $_SESSION['username'] = $this->username;
         $_SESSION['message'] = $this->message;
+        $_SESSION['password'] = $this->password;
         echo "Hello " . $this->username . ". Welcome back, We're happy to see you again. <a href='index.php?controller=product&action=display'>continue your shopping</a>";
         die();
     }

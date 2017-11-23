@@ -12,7 +12,7 @@
  */
 abstract class UserOperation {
 
-    final public function changePassword($password_enterd, $new_pass) {
+    final public function change_password($password_enterd, $new_pass) {
         if ($this->confirmPassword($password_enterd) == TRUE){
             return $this->updatePassword($new_pass);
         }

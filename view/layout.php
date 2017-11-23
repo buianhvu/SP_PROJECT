@@ -18,6 +18,9 @@
         </header>
         <?php require_once('translate.php') ?>
         <footer>
+            <?php 
+            echo "<br>_____________________________________________________________";
+            ?>
             <h5>The copyright belongs to group 04 ICT K59</h5>
         </footer>
     </body>
