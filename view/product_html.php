@@ -22,6 +22,19 @@
 	
 
 		<div class="productosWrapper large-12 columns">
+<!--                    <div class="coin-wrapper">
+                        <img src="">
+                        <span class="large-12 columns product-details">
+                            <h3>
+                                <span class="price">$USD</span>
+                                <h3>Quality: <span class="stock"></span></h3>
+                             
+                            </h3>
+                        </span>
+                        <a class="large-12 columns btn submit ladda-button prod-" data-style="slide-right" onclick="app.addtoCart();">Add to cart</a>
+                        <div class="clearfix"></div>'
+                    </div>
+                  -->
 		</div>
 
 	</div>
