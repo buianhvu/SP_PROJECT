@@ -6,12 +6,14 @@
             <?php
             if (isset($_SESSION['username'])) {
                 echo $_SESSION['username'] . ' ,';
+                echo "<a href='index.php?controller=profile&action=display'> Profile </a>";
                 echo "<a href='index.php?controller=logout&action=logout'>Logout</a>";
             }
-            if(isset($_SESSION['message'])){
-            echo "<br> Message: "; 
-            echo $_SESSION['message'];
+            if (isset($_SESSION['message'])) {
+                echo "<br> Message: ";
+                echo $_SESSION['message'];
             }
+            echo "<br>_____________________________________________________________";
             ?>
         </header>
         <?php require_once('translate.php') ?>

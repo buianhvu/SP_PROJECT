@@ -1,9 +1,10 @@
 <?php
 
+require_once 'model/model_interfaces/user_operation.php';
 require_once 'model/model_interfaces/observer_interface.php';
 require_once 'connect.php';
 
-class Account implements ObserverInterface {
+class Account extends UserOperation implements ObserverInterface {
 
     private $username;
     private $password;
@@ -58,6 +59,25 @@ class Account implements ObserverInterface {
              UPDATE member SET
                 message =  
             '{$message}' WHERE username = 
+            '{$this->username}'
+    ");
+
+        return $update_mess;
+    }
+
+    public function confirmPassword($password_entered) {
+        if (strcmp($this->password, $password_entered) == 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function updatePassword($new_pass) {
+        $update_mess = mysql_query("
+             UPDATE member SET
+                password =  
+            '{$new_pass}' WHERE username = 
             '{$this->username}'
     ");
 

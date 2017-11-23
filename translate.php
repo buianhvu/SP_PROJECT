@@ -34,8 +34,11 @@ class Translate {
         if ($this->controller == "logout") {
             $this->called_class = new LogoutController();
         }
-         if ($this->controller == "notify") {
+        if ($this->controller == "notify") {
             $this->called_class = new NotifyController();
+        }
+        if ($this->controller == "profile") {
+            $this->called_class = new ProfileController();
         }
     }
 
