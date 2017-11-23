@@ -12,8 +12,8 @@
  */
 interface SubjectInterface {
     
-    public function addObserver(ObserverInterface $observer);
+    public function addObserver($observer);
     public function deleteObserver();
-    public function notifyObservers();
+    public function notifyObservers($message);
     //put your code here
 }

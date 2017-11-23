@@ -1,4 +1,5 @@
 <?php
+require_once 'model/model_interfaces/subject_interface.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,7 +20,7 @@ class Subject implements SubjectInterface {
         $this->array_observers = array();
     }
 
-    public function addObserver(\ObserverInterface $observer) {
+    public function addObserver($observer) {
         $this->array_observers[] = $observer;
     }
 

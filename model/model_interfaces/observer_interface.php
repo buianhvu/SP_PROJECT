@@ -11,6 +11,6 @@
  * @author BuiAnhVu
  */
 interface ObserverInterface {
-    public function updateMessage();
+    public function updateMessage($message);
     //put your code here
 }

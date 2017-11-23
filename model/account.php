@@ -1,6 +1,9 @@
 <?php
-include 'model_interfaces/observer.php';
-class Account implements ObserverInterface{
+
+require_once 'model/model_interfaces/observer_interface.php';
+require_once 'connect.php';
+
+class Account implements ObserverInterface {
 
     private $username;
     private $password;
@@ -19,14 +22,14 @@ class Account implements ObserverInterface{
     }
 
     public static function get_by_name($username) {
-        $query = mysql_query("SELECT username, password FROM member WHERE username='$username'");
+        $query = mysql_query("SELECT username, password, message FROM member WHERE username='$username'");
         return $query;
     }
+
     public static function get_by_email($email) {
         $query = mysql_query("SELECT username, password FROM member WHERE username='$email'");
         return $query;
     }
-    
 
     public static function add_member($username, $password, $email, $fullname, $birthday, $sex) {
         $addmember = mysql_query("
@@ -47,14 +50,18 @@ class Account implements ObserverInterface{
             '{$sex}'
         )
     ");
-            return $addmember;
+        return $addmember;
     }
 
     public function updateMessage($message) {
-        $update_mess = mysql_querry("UPDATE member SET message = '{$message}' WHERE username = '{$this->username}'");
+        $update_mess = mysql_query("
+             UPDATE member SET
+                message =  
+            '{$message}' WHERE username = 
+            '{$this->username}'
+    ");
+
         return $update_mess;
     }
 
 }
-
-?>

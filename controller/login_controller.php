@@ -6,6 +6,7 @@ class LoginController {
 
     private $username;
     private $password;
+    private $message;
 
     function display() {
         require_once ('view/login_html.php');
@@ -48,11 +49,13 @@ class LoginController {
             echo "Your password is entered not correctly <a href='javascript: history.go(-1)'>go back</a>";
             exit;
         }
+        $this->message = $row['message'];
     }
 
     function let_login_pass() {
         //Save the username onto the session
         $_SESSION['username'] = $this->username;
+        $_SESSION['message'] = $this->message;
         echo "Hello " . $this->username . ". Welcome back, We're happy to see you again. <a href='index.php?controller=product&action=display'>continue your shopping</a>";
         die();
     }
