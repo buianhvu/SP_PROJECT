@@ -6,3 +6,8 @@
  * and open the template in the editor.
  */
 
+class PayByCC {
+     function display(){
+        require_once (__DIR__.'/../view/paybycc_html.php');
+    }
+}

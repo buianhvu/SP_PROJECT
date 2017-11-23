@@ -6,3 +6,8 @@
  * and open the template in the editor.
  */
 
+class PayByPaypal{
+     function display(){
+        require_once (__DIR__.'/../view/paybypaypal_html.php');
+    }
+}
