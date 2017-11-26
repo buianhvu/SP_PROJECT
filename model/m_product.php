@@ -1,9 +1,12 @@
 <?php
-if(!isset($_SESSION)) {
+
+if (!isset($_SESSION)) {
     session_start();
 }
-require_once(__DIR__.'/../Helper/DBHelper.php');
+require_once(__DIR__ . '/../Helper/DBHelper.php');
+
 class M_Product extends DBHelper {
+
     private $product_id;
     private $product_name;
     private $brand;
@@ -16,24 +19,38 @@ class M_Product extends DBHelper {
     private $quantity_in_stock;
     private $product_image;
     private $isConn;
+    #new add
+    private $product_price;
+    private $product_desc;
+    
+    
+    public function __construct($id, $name, $img, $desc, $price, $stock) {
+        parent::__construct();
+        $this->product_id = $id;
+        $this->product_name = $name;
+        $this->product_image = $img;
+        $this->product_desc = $desc;
+        $this->product_price = $price;
+        $this->quantity_in_stock = $stock;
+    }
 
     public function getAllProduct() {
         $sql = "SELECT * FROM product";
         $this->isConn = new DBHelper();
         $result = mysqli_query($this->isConn->db_connect(), $sql);
-       return $result;
+        return $result;
     }
 
     public function getLimitProduct($last_displayed_id) {
-        $sql = "SELECT * FROM product WHERE ".$last_displayed_id." >= product_id ORDER BY product_id DESC";
+        $sql = "SELECT * FROM product WHERE " . $last_displayed_id . " >= product_id ORDER BY product_id DESC";
         $this->isConn = new DBHelper();
         $result = mysqli_query($this->isConn->db_connect(), $sql);
         return $result;
     }
 
     public function getCustomProduct($last_displayed_id, $custom_brand) {
-        $sql = "SELECT * FROM product WHERE ".$last_displayed_id." >= product_id AND '".$custom_brand.
-        "' = brand ORDER BY product_id DESC";
+        $sql = "SELECT * FROM product WHERE " . $last_displayed_id . " >= product_id AND '" . $custom_brand .
+                "' = brand ORDER BY product_id DESC";
         $this->isConn = new DBHelper();
         $result = mysqli_query($this->isConn->db_connect(), $sql);
         return $result;
@@ -48,15 +65,14 @@ class M_Product extends DBHelper {
 //
     public function getDetailProduct($product_id) {
         $result_array = [];
-        if(is_array($product_id)) {
+        if (is_array($product_id)) {
             foreach ($product_id as $product_id) {
                 $sql = "SELECT * FROM product WHERE product_id = '" . $product_id . "'";
                 $this->isConn = new DBHelper();
                 $result_array[] = mysqli_query($this->isConn->db_connect(), $sql);
             }
             return $result_array;
-        }
-        else {
+        } else {
             $sql = "SELECT * FROM product WHERE product_id = '" . $product_id . "'";
             $this->isConn = new DBHelper();
             $result = mysqli_query($this->isConn->db_connect(), $sql);
@@ -65,19 +81,18 @@ class M_Product extends DBHelper {
     }
 
     public function getImage($product_id) {
-        $sql = "SELECT * FROM image WHERE image_id IN (SELECT image_id from product_image WHERE product_id = '".$product_id."')";
+        $sql = "SELECT * FROM image WHERE image_id IN (SELECT image_id from product_image WHERE product_id = '" . $product_id . "')";
         $this->isConn = new DBHelper();
         $result = mysqli_query($this->isConn->db_connect(), $sql);
         return $result;
     }
 
-    public function getDetailMultiProduct($product_ids)
-    {
-        //param must be array
+    public function getDetailMultiProduct($product_ids) {
+//param must be array
         $this->isConn = new DBHelper();
         $result = [];
         foreach ($product_ids as $product_id) {
-            foreach($product_id as $product_id) {
+            foreach ($product_id as $product_id) {
                 $sql = "SELECT * FROM product WHERE product_id = '" . $product_id . "'";
                 $result[] = mysqli_query($this->isConn->db_connect(), $sql);
             }
@@ -86,51 +101,67 @@ class M_Product extends DBHelper {
     }
 
     public function getSimilarProduct($brand) {
-        $sql = "SELECT * FROM product WHERE brand = '".$brand."'";
+        $sql = "SELECT * FROM product WHERE brand = '" . $brand . "'";
         $this->isConn = new DBHelper();
         $result = mysqli_query($this->isConn->db_connect(), $sql);
         return $result;
     }
 
     public function getBrandFromId($product_id) {
-        $sql = "SELECT brand FROM product WHERE product_id = '".$product_id."'";
+        $sql = "SELECT brand FROM product WHERE product_id = '" . $product_id . "'";
         $this->isConn = new DBHelper();
         $result = mysqli_query($this->isConn->db_connect(), $sql);
         $row = mysqli_fetch_object($result);
         return $row->brand;
     }
-    public function addProduct() {
 
+    public function addProduct() {
+        
     }
 
     public function modifyProduct() {
-
+        
     }
 
     public function getSumProductId() {
-        $this->isConn= new DBHelper();
+        $this->isConn = new DBHelper();
         $sql = "SELECT COUNT(*) as num_rows FROM product";
-        $data = mysqli_query ($this->isConn->db_connect(), $sql);
+        $data = mysqli_query($this->isConn->db_connect(), $sql);
         $row = mysqli_fetch_assoc($data);
         $num_all_product = $row['num_rows'];
         return $num_all_product;
     }
 
     public function getSumCustomProduct($custom_brand) {
-        $this->isConn= new DBHelper();
-        $sql = "SELECT COUNT(*) as num_rows1 FROM product WHERE brand = '".$custom_brand."'";
-        $data1 = mysqli_query ($this->isConn->db_connect(), $sql);
+        $this->isConn = new DBHelper();
+        $sql = "SELECT COUNT(*) as num_rows1 FROM product WHERE brand = '" . $custom_brand . "'";
+        $data1 = mysqli_query($this->isConn->db_connect(), $sql);
         $row = mysqli_fetch_assoc($data1);
         $num_all_product = $row['num_rows1'];
         return $num_all_product;
     }
-    //		public function getDetailProduct($product_id) {
+
+    public static function getSearchByName($search) {
+        $result = array();
+        $query = "select * from product where name like '%$search%'";
+        $sql = mysql_query($query);
+        if ($search == "") {
+            return null;
+        } else {
+            while ($row = mysql_fetch_assoc($sql)) {
+                $item = new M_Product($row['id'], $row['name'], $row['img'], $row['desc'], $row['price'], $row['stock']);
+                $result[] = $item;
+            }
+        }
+        return $result;
+    }
+
+//		public function getDetailProduct($product_id) {
 //            $sql = "SELECT * FROM product WHERE product_id = '".$product_id."'";
 //            $this->isConn = new Connection();
 //            $result = mysqli_query($this->isConn->db_connect(), $sql);
 //            return $result;
 //		}
-
 //        public function getMultiDetailProduct($product_ids)
 //        {
 //            //param must be array
