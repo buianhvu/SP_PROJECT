@@ -10,9 +10,7 @@
 <link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.8/ladda.min.css'>
     </head>
-    <body>
-        <h1>Welcome to XYZ Wears</h1>
-            
+    <body>            
             <div class="row">
 
 		<a class="cart-icon">

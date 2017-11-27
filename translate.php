@@ -40,6 +40,9 @@ class Translate {
         if ($this->controller == "profile") {
             $this->called_class = new ProfileController();
         }
+        if ($this->controller == "search") {
+            $this->called_class = new SearchController();
+        }
     }
 
     function load_a_service() {
