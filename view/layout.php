@@ -25,17 +25,20 @@
             echo "<br>_____________________________________________________________";
             ?>
         </header>
-            <?php
-            if (isset($_SESSION['username'])) {
+        <?php
+        if (isset($_SESSION['username'])) {
+            if ($_GET['controller'] == 'product') {
                 require_once('view/searchbox_html.php');
             }
-            ?>
+        }
+        ?>
         <?php require_once('translate.php') ?>
         <footer>
-        <?php
-        echo "<br>_____________________________________________________________";
-        ?>
+            <?php
+            echo "<br>_____________________________________________________________";
+            ?>
             <h5>The copyright belongs to group 04 ICT K59</h5>
         </footer>
     </body>
 </html>
+

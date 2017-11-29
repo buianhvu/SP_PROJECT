@@ -44,9 +44,11 @@ class Translate {
 
             $this->called_class = new SearchController();
         }
-         if ($this->controller == "category") {
-
+        if ($this->controller == "category") {
             $this->called_class = new CategoryController();
+        }
+        if ($this->controller == "payment") {
+            $this->called_class = new PaymentController();
         }
     }
 
