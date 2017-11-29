@@ -17,5 +17,11 @@ class Category {
         $query = mysql_query("SELECT * FROM category");
         return $query;
     }
+    
+    public static function get_products_by_cate_id($cate_id){
+        $query = "SELECT * FROM product WHERE cate_id =' ".$cate_id. "'";
+        $result = mysql_query($query);
+        return $result;
+    }
 
 }

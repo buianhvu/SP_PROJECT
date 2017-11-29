@@ -256,7 +256,7 @@ var app = window.app || {},
         if (undefined !== cart && null !== cart && cart !== '') {
             var i = 1;
             var total = 0;
-
+            
             _.forEach(cart.items, function (prod, key) {
                 total = total + (prod.cant * prod.price);
                 dinamic += '<input type="hidden" name="item_name_' + i + '" value="' + prod.name + '">';
