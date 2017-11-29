@@ -44,6 +44,10 @@ class Translate {
 
             $this->called_class = new SearchController();
         }
+         if ($this->controller == "category") {
+
+            $this->called_class = new CategoryController();
+        }
     }
 
     function load_a_service() {
