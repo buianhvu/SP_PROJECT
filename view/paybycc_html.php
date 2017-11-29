@@ -50,7 +50,7 @@
 
                         </td>
                         <td>
-                            <input type="submit" name="txtEmail" size="50" />
+                            <input type="submit" name="txtEmail" size="50" value="Confirmed Purchase"/>
                         </td>
                     </tr>
 

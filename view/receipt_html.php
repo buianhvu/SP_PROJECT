@@ -1,5 +1,8 @@
 <html>
+                <button onclick="location.href='index.php?controller=product&action=display';">Back to products page</button>
+
     <div class="row">
+
     <h3>Receipt  Of Products</h3>
     <table cellpadding="0" cellspacing="0" border="1">
         <tr>
@@ -35,8 +38,6 @@
         echo $_POST['amount_'.$i] * $_POST['quantity_'.$i];
         echo "</td>";
         echo "</tr>";
-        $total_amount = $_POST['amount_'.$i] * $_POST['quantity_'.$i];
-        $_SESSION['total_amount'] = $total_amount;
         }
         echo "<tr>";
         echo "<td>";
@@ -47,11 +48,12 @@
         echo "<td>";
         echo "</td>";
         echo "<td>";
-        echo $total_amount;
+        echo $_POST['total'];
         echo "</td>";
         echo "</tr>";
         ?>
     </table>
     </div>
 </html>
+
 

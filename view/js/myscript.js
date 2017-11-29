@@ -60,6 +60,8 @@ var app = window.app || {},
                 console.log("Fail vcl");
             }
         });
+    } else if(elementExist.textContent == "Empty"){
+        localStorage.removeItem('cart');
     } else {
         var products = elementExist.textContent;
         var productos = JSON.parse(products),
@@ -280,7 +282,6 @@ var app = window.app || {},
         app.getProducts();
         app.updatePayForm();
         app.createProducts();
-       
     });
 
 })(jQuery);

@@ -38,11 +38,15 @@ class PaymentController {
         $date = new DateTime('now', new DateTimeZone('Asia/Bangkok'));
         $date_time = $date->format('d-m-Y H:i:s');
         if( Order::add_order($user_id, $total, $date_time) ){
-            echo "Successfully, <a href=index.php?controller=product&action=display>go back</a>";
+          $this->show_complete_order();
         }
         else{
             echo "Failed, <a href=index.php?controller=product&action=display>go back</a>";
         }
+    }
+    
+    public function show_complete_order(){
+        require_once ('view/completeOrder_html.php');
     }
 }
 

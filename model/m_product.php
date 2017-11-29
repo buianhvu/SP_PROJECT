@@ -26,9 +26,13 @@ class M_Product extends DBHelper {
 
 
     public function getAllProduct() {
+        try{
         $sql = "SELECT * FROM product";
         $this->isConn = new DBHelper();
         $result = mysqli_query($this->isConn->db_connect(), $sql);
+        } catch(Exception $e){
+            echo "Error:".$e->getMessage();
+        }
         return $result;
     }
 
@@ -136,6 +140,7 @@ class M_Product extends DBHelper {
     }
 
     public static function getSearchByName($search) {
+        try{
         $result = array();
         $query = "select * from product where name like '%$search%'";
         $sql = mysql_query($query);
@@ -147,6 +152,9 @@ class M_Product extends DBHelper {
             array_push($json, $row);
             }
             $result = json_encode($json);
+        }
+        } catch (Exception $e){
+            echo "Error:".$e->getMessage();
         }
         return $result;
     }

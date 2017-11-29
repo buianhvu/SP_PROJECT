@@ -19,8 +19,12 @@ class Category {
     }
     
     public static function get_products_by_cate_id($cate_id){
+        try {
         $query = "SELECT * FROM product WHERE cate_id =' ".$cate_id. "'";
         $result = mysql_query($query);
+        } catch (ErrorException $e) {
+            echo "Error:".$e->getMessage();
+        }
         return $result;
     }
 

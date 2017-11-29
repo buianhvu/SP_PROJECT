@@ -34,7 +34,7 @@ class SearchController {
         $count = 0;
         if ($this->check_search($keyword)){
             $result = M_Product::getSearchByName($keyword);
-            if($result == null) {
+            if($result == "[]") {
             echo "Product not found!";
             } else {
             $this->display_result($result);
