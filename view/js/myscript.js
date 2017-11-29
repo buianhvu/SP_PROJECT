@@ -29,60 +29,6 @@ var app = window.app || {},
     app.createProducts = function () {
         var products;
 
-//        
-//        var productos = [
-//            {
-//                id: 1,
-//                img: 'view/images/robot.jpg',
-//                name: 'Robot',
-//                price: 299.00,
-//                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-//                stock: 4
-//            },
-//            {
-//                id: 2,
-//                name: 'Keyboard',
-//                img: 'view/images/keyboard.jpg',
-//                price: 199.00,
-//                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-//                stock: 2
-//            },
-//            {
-//                id: 3,
-//                name: 'Headphone',
-//                img: 'view/images/headphone.jpg',
-//                price: 99.00,
-//                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-//                stock: 1
-//            },
-//            {
-//                id: 4,
-//                name: 'Libertad 5oz',
-//                img: 'view/images/headphone.jpg',
-//                price: 80.00,
-//                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-//                stock: 2
-//            }
-//        ],
-//                wrapper = $('.productosWrapper'),
-//                contenido = '';
-//        for (var i = 0; i < productos.length; i++) {
-//
-//            if (productos[i].stock > 0) {
-//
-//                contenido += '<div class="coin-wrapper">';
-//                contenido += '		<img src="' + productos[i].img + '" alt="' + productos[i].name + '">';
-//                contenido += '		<span class="large-12 columns product-details">';
-//                contenido += '			<h3>' + productos[i].name + ' <span class="price">$ ' + productos[i].price + ' USD</span></h3>';
-//                contenido += '			<h3>Quality: <span class="stock">' + productos[i].stock + '</span></h3>';
-//                contenido += '		</span>';
-//                contenido += '		<a class="large-12 columns btn submit ladda-button prod-' + productos[i].id + '" data-style="slide-right" onclick="app.addtoCart(' + productos[i].id + ');">Add to cart</a>';
-//                contenido += '		<div class="clearfix"></div>';
-//                contenido += '</div>';
-//
-//            }
-//
-//        }
         $.ajax({
             type: "POST",
             url : "controller/AjaxGetProduct.php",
@@ -119,8 +65,6 @@ var app = window.app || {},
 
     app.addtoCart = function (id) {
         var l = Ladda.create(document.querySelector('.prod-' + id));
-        console.log(JSON.parse(localStorage.getItem('productos')));
-        console.log(_.find(JSON.parse(localStorage.getItem('productos')), {'id': ""+id+""}));
         l.start();
         var productos = JSON.parse(localStorage.getItem('productos')),
                 producto = _.find(productos, {'id': ""+id+""}),
@@ -260,14 +204,13 @@ var app = window.app || {},
             var total = 0;
 
             _.forEach(cart.items, function (prod, key) {
-                total += parseInt(prod.price);
+                total = total + (prod.cant * prod.price);
                 dinamic += '<input type="hidden" name="item_name_' + i + '" value="' + prod.name + '">';
                 dinamic += '<input type="hidden" name="amount_' + i + '" value="' + prod.price + '">';
                 dinamic += '<input type="hidden" name="item_number_' + i + '" value="' + prod.id + '" />';
                 dinamic += '<input type="hidden" name="quantity_' + i + '" value="' + prod.cant + '" />';
                 dinamic += '<input type="hidden" name="total" value="' + total +'" />';
                 i++;
-                console.log(total);
 
             });
             statics += dinamic + '<button type="submit" class="pay">Payment &nbsp;<i class="ion-chevron-right"></i></button></form>';

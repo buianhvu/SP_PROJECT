@@ -41,6 +41,7 @@ class Translate {
             $this->called_class = new ProfileController();
         }
         if ($this->controller == "search") {
+
             $this->called_class = new SearchController();
         }
     }

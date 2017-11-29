@@ -17,5 +17,5 @@ class ProductController {
         require_once ('view/product_html.php');
     }
 
-    //put your code here
+    
 }

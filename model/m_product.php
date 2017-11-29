@@ -19,6 +19,11 @@ class M_Product extends DBHelper {
     private $quantity_in_stock;
     private $product_image;
     private $isConn;
+    #new add
+    private $product_price;
+    private $product_desc;
+    
+
 
     public function getAllProduct() {
         $sql = "SELECT * FROM product";
@@ -50,7 +55,9 @@ class M_Product extends DBHelper {
 //    }
 //
     public function getDetailProduct($product_id) {
-        $result_array = [];
+
+        $result_array = array();
+
         if (is_array($product_id)) {
             foreach ($product_id as $product_id) {
                 $sql = "SELECT * FROM product WHERE product_id = '" . $product_id . "'";
@@ -74,9 +81,10 @@ class M_Product extends DBHelper {
     }
 
     public function getDetailMultiProduct($product_ids) {
-        //param must be array
+
+//param must be array
         $this->isConn = new DBHelper();
-        $result = [];
+        $result = array();
         foreach ($product_ids as $product_id) {
             foreach ($product_id as $product_id) {
                 $sql = "SELECT * FROM product WHERE product_id = '" . $product_id . "'";
@@ -134,15 +142,17 @@ class M_Product extends DBHelper {
         if ($search == "") {
             return null;
         } else {
+            $json = array();
             while ($row = mysql_fetch_assoc($sql)) {
-                $item = new M_Product($row['id'], $row['name'], $row['img'], $row['desc'], $row['price'], $row['stock']);
-                $result[] = $item;
+            array_push($json, $row);
             }
+            $result = json_encode($json);
         }
         return $result;
     }
 
-    //		public function getDetailProduct($product_id) {
+
+//		public function getDetailProduct($product_id) {
 //            $sql = "SELECT * FROM product WHERE product_id = '".$product_id."'";
 //            $this->isConn = new Connection();
 //            $result = mysqli_query($this->isConn->db_connect(), $sql);

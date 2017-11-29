@@ -16,5 +16,5 @@ class LogoutController{
         session_destroy();
         header("location:index.php");
     }
-    //put your code here
+    
 }

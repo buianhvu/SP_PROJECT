@@ -34,7 +34,7 @@ class SearchController {
         $this->keyword = $keyword;
         if ($this->check_search($keyword)){
             $result = M_Product::getSearchByName($keyword);
-            echo count($result).' results found';
+
             
         }
     }

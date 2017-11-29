@@ -17,8 +17,8 @@ class ProductAdapter{
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             array_push($json, $row);
         }
-        $json = json_encode($json);
-        return $json;
+        $json_arr = json_encode($json);
+        return $json_arr;
     }
     
     
