@@ -27,8 +27,9 @@ var app = window.app || {},
     };
 
     app.createProducts = function () {
-        var products;
-
+        var elementExist = document.getElementById("product-ict");
+        if(!elementExist){
+        
         $.ajax({
             type: "POST",
             url : "controller/AjaxGetProduct.php",
@@ -59,6 +60,59 @@ var app = window.app || {},
                 console.log("Fail vcl");
             }
         });
+    } else {
+        var products = elementExist.textContent;
+        var productos = JSON.parse(products),
+                  wrapper = $('.productosWrapper'),
+                    contenido='';
+                for (var i = 0; i < productos.length; i++) {
+
+
+                contenido += '<div class="coin-wrapper">';
+                contenido += '		<img src="' + productos[i].img + '" alt="' + productos[i].name + '">';
+                contenido += '		<span class="large-12 columns product-details">';
+                contenido += '			<h3>' + productos[i].name + ' <span class="price">$ ' + productos[i].price + ' USD</span></h3>';
+                contenido += '			<h3>Quality: <span class="stock">' + productos[i].stock + '</span></h3>';
+                contenido += '		</span>';
+                contenido += '		<a class="large-12 columns btn submit ladda-button prod-' + productos[i].id + '" data-style="slide-right" onclick="app.addtoCart(' + productos[i].id + ');">Add to cart</a>';
+                contenido += '		<div class="clearfix"></div>';
+                contenido += '</div>';
+
+            
+
+                }
+                wrapper.html(contenido);
+                localStorage.setItem('productos', JSON.stringify(productos));  
+    }
+
+    };
+    
+     app.searchedProducts = function (searchedProducts) {
+        
+
+ 
+                var productos = JSON.parse(searchedProducts),
+                  wrapper = $('.productosWrapper'),
+                    contenido='';
+                for (var i = 0; i < productos.length; i++) {
+
+
+                contenido += '<div class="coin-wrapper">';
+                contenido += '		<img src="' + productos[i].img + '" alt="' + productos[i].name + '">';
+                contenido += '		<span class="large-12 columns product-details">';
+                contenido += '			<h3>' + productos[i].name + ' <span class="price">$ ' + productos[i].price + ' USD</span></h3>';
+                contenido += '			<h3>Quality: <span class="stock">' + productos[i].stock + '</span></h3>';
+                contenido += '		</span>';
+                contenido += '		<a class="large-12 columns btn submit ladda-button prod-' + productos[i].id + '" data-style="slide-right" onclick="app.addtoCart(' + productos[i].id + ');">Add to cart</a>';
+                contenido += '		<div class="clearfix"></div>';
+                contenido += '</div>';
+
+            
+
+                }
+                wrapper.html(contenido);
+                localStorage.setItem('productos', JSON.stringify(productos));   
+       
        
 
     };
@@ -224,6 +278,7 @@ var app = window.app || {},
         app.getProducts();
         app.updatePayForm();
         app.createProducts();
+       
     });
 
 })(jQuery);

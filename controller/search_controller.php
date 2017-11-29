@@ -34,13 +34,13 @@ class SearchController {
         $this->keyword = $keyword;
         if ($this->check_search($keyword)){
             $result = M_Product::getSearchByName($keyword);
-
-            
         }
+        $this->display_result($result);
     }
 
-    public function display_result() {
-        
+    public function display_result($product) {
+        $result = $product;
+        require_once ('view/searched_product_html.php');
     }
 
 }
