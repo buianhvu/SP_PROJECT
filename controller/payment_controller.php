@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . "/../controller/interfaces/paymentstrategy.php");
+require_once 'model/order.php';
 
 class PaymentController {
 
@@ -13,26 +14,36 @@ class PaymentController {
                 $this->pay_by_paypal();
             }
         }
-        $count = $_POST['num'];
-    for ($i = 1; $i < $count + 1;$i++ ){
-        echo $_POST['item_name_'.$i];
-        echo $_POST['item_number_'.$i];
-        echo $_POST['amount_'.$i];
-                echo $_POST['quantity_'.$i];
-
     }
+
+    public function show_receipt() {
+        require_once 'view/receipt_html.php';
     }
 
     public function pay_by_cc() {
+        $this->show_receipt();
         $controller = new PayByCC();
         $controller->display();
     }
 
     public function pay_by_paypal() {
+        $this->show_receipt();
         $controller = new PayByPaypal();
         $controller->display();
     }
 
+    public function complete_order() {
+        $total = $_SESSION['total_amount'];
+        $user_id = $_SESSION['user_id'];
+        $date = new DateTime('now', new DateTimeZone('Asia/Bangkok'));
+        $date_time = $date->format('d-m-Y H:i:s');
+        if( Order::add_order($user_id, $total, $date_time) ){
+            echo "Successfully, <a href=index.php?controller=product&action=display>go back</a>";
+        }
+        else{
+            echo "Failed, <a href=index.php?controller=product&action=display>go back</a>";
+        }
+    }
 }
 
 class PayByCC implements paymentstrategy {

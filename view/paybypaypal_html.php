@@ -8,8 +8,8 @@
         <div class="row">
             <h3>Payment by PayPal</h3>
             <h3>Please fulfill all the fields to complete your payment</h3>
-            <h4>Note: Auto direct to Payment by Paypal if total amount > $100</h4>
-            <form>
+            <h4>Note: Auto direct to Payment by Paypal if total amount is larger than $100</h4>
+            <form action = "index.php?controller=payment&action=add_order" method="get" >
                 <table cellpadding="0" cellspacing="0" border="1">
                     <tr>
                         <td>

@@ -23,7 +23,7 @@ class Account extends UserOperation implements ObserverInterface {
     }
 
     public static function get_by_name($username) {
-        $query = mysql_query("SELECT username, password, message FROM member WHERE username='$username'");
+        $query = mysql_query("SELECT username, password, message, user_id FROM member WHERE username='$username'");
         return $query;
     }
 

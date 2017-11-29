@@ -7,6 +7,7 @@ class LoginController {
     private $username;
     private $password;
     private $message;
+    private $user_id;
 
     function display() {
         require_once ('view/login_html.php');
@@ -50,6 +51,7 @@ class LoginController {
             exit;
         }
         $this->message = $row['message'];
+        $this->user_id = $row['user_id'];
     }
 
     function let_login_pass() {
@@ -57,6 +59,7 @@ class LoginController {
         $_SESSION['username'] = $this->username;
         $_SESSION['message'] = $this->message;
         $_SESSION['password'] = $this->password;
+        $_SESSION['user_id'] = $this->user_id;
         echo "Hello " . $this->username . ". Welcome back, We're happy to see you again. <a href='index.php?controller=product&action=display'>continue your shopping</a>";
         die();
     }
