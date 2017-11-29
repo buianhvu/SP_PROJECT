@@ -44,6 +44,9 @@ class Translate {
 
             $this->called_class = new SearchController();
         }
+        if($this->controller == "payment"){
+            $this->called_class = new PaymentController();
+        }
     }
 
     function load_a_service() {

@@ -6,8 +6,9 @@
     <body>
             
             <div class="row">
-                <h1>Payment by Credit Card</h1>
-		<h1>Please fulfill all the fields to complete your payment</h1>
+                <h5>Payment by Credit Card</h5>
+		<h5>Please fulfill all the fields to complete your payment</h5>
+                Note: auto apply Payment by credit card if total amount < $100
                 <form>
                      <table cellpadding="0" cellspacing="0" border="1">
                 <tr>
@@ -40,6 +41,14 @@
                     </td>
                     <td>
                         <input type="text" name="txtEmail" size="50" />
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <input type="submit" name="txtEmail" size="50" />
                     </td>
                 </tr>
                
