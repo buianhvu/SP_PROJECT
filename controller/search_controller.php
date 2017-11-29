@@ -23,7 +23,6 @@ class SearchController {
 
     public function check_search($keyword) {
         if ($this->keyword == "") {
-            echo "Please enter something to start searching.";
             return false;
         }
         return true;
@@ -32,10 +31,21 @@ class SearchController {
     public function process_search() {
         $keyword = $_GET['search'];
         $this->keyword = $keyword;
+        $count = 0;
         if ($this->check_search($keyword)){
             $result = M_Product::getSearchByName($keyword);
+            if($result === null) {
+            echo "Product not found!";
+            } else {
+            $this->display_result($result);
+            
+            }
+        } else {
+                        echo "Please enter something to start searching.";
+
         }
-        $this->display_result($result);
+        
+      
     }
 
     public function display_result($product) {
