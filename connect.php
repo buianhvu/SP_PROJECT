@@ -29,6 +29,11 @@ class Connection {
 
         return self::$instance;
     }
+    public static function check_login(){
+        if(isset($_SESSION['username']) && isset($_SESSION['password']))
+            return true;
+        return false;
+    }
 }
 ?>
 
