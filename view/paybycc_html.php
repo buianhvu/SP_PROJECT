@@ -15,34 +15,10 @@
                 <table cellpadding="0" cellspacing="0" border="1">
                     <tr>
                         <td>
-                            Full name
-                        </td>
-                        <td>
-                            <input type="text" name="txtFullname" size="50" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             Credit Card Number
                         </td>
                         <td>
-                            <input type="password" name="txtPassword" size="50" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Credit Card Type
-                        </td>
-                        <td>
-                            <input type="password" name="txtPassword" size="50" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Expired Date
-                        </td>
-                        <td>
-                            <input type="text" name="txtEmail" size="50" />
+                            <input type="password" name="card_number" size="50" />
                         </td>
                     </tr>
                     <tr>
