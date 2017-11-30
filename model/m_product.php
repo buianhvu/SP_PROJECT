@@ -28,8 +28,7 @@ class M_Product extends DBHelper {
     public function getAllProduct() {
         try{
         $sql = "SELECT * FROM product";
-        $this->isConn = new DBHelper();
-        $result = mysqli_query($this->isConn->db_connect(), $sql);
+        $result = mysql_query( $sql);
         } catch(Exception $e){
             echo "Error:".$e->getMessage();
         }
