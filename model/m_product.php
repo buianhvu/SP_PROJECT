@@ -25,11 +25,15 @@ class M_Product extends DBHelper {
     
 
 
-    public function getAllProduct() {
+    public static function getAllProduct() {
         try{
         $sql = "SELECT * FROM product";
-        $this->isConn = new DBHelper();
-        $result = mysqli_query($this->isConn->db_connect(), $sql);
+        $con = new DBHelper();
+        $result = mysqli_query($con->db_connect(), $sql);
+        if (!$result) {
+        printf("Error: %s\n", mysqli_error($con->db_connect()));
+        exit();
+}
         } catch(Exception $e){
             echo "Error:".$e->getMessage();
         }
