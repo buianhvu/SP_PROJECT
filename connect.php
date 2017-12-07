@@ -9,10 +9,10 @@ class Connection {
 
 // private construction not allows to creat instance
     public function connect() {
-        $ketnoi['host'] = 'mysql.hostinger.vn'; //Tên server, nếu dùng hosting free thì cần thay đổi
-        $ketnoi['dbname'] = 'u882635201_xyz'; //Đây là tên của Database
-        $ketnoi['username'] = 'u882635201_xyz'; //Tên sử dụng Database
-        $ketnoi['password'] = '123456'; //Mật khẩu của tên sử dụng Database
+        $ketnoi['host'] = 'localhost'; //Tên server, nếu dùng hosting free thì cần thay đổi
+        $ketnoi['dbname'] = 'sp_ict_group04'; //Đây là tên của Database
+        $ketnoi['username'] = 'root'; //Tên sử dụng Database
+        $ketnoi['password'] = ''; //Mật khẩu của tên sử dụng Database
         @mysql_connect("{$ketnoi['host']}", "{$ketnoi['username']}", "{$ketnoi['password']}")
                 or
                 die("Không thể kết nối database");

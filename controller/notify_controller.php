@@ -15,7 +15,7 @@ class NotifyController {
     }
     
     public function change_message(){
-        echo '123';
+//        echo '123';
         $names = array();
         for($i = 1; $i < 10; $i++){
             $names[]=$_GET['p'.$i];

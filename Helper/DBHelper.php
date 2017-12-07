@@ -5,10 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-	define ('DB_SERVER', 'mysql.hostinger.vn');
-	define ('DB_USERNAME', 'u882635201_xyz');
-	define ('DB_PASSWORD', '123456');
-	define ('DB_DATABASE', 'u882635201_xyz');
+	define ('DB_SERVER', 'localhost');
+	define ('DB_USERNAME', 'root');
+	define ('DB_PASSWORD', '');
+	define ('DB_DATABASE', 'sp_ict_group04');
         
 class DBHelper {
 	private $DB_SERVER;
