@@ -4,10 +4,10 @@ require_once(__DIR__ . "/../controller/interfaces/paymentstrategy.php");
 require_once 'model/order.php';
 
 class PaymentController {
-
     public function payment() {
         if (isset($_POST['total'])) {
             $amount = $_POST['total'];
+            $_SESSION['total_amount'] = $amount;
             if ($amount < 100) {
                 $this->pay_by_cc();
             } else {

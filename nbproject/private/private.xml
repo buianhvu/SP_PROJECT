@@ -3,37 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/model/subject.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/controller/home_controller.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/controller/login_controller.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/login_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/searchbox_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/registration_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/controller/product_controller.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/product_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/model/m_product.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/home_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/index.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/model/model_interfaces/user_operation.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/translate.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/paybycc_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/layout.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/model/account.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/model/model_interfaces/subject_interface.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/controller/profile_controller.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/controller/AjaxGetProduct.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/connect.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/controller/registration_controller.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/controller/logout_controller.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/controller/notify_controller.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/Helper/DBHelper.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/notify_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/paybypaypal_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/profile_html.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/model/model_interfaces/observer_interface.php</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/view/js/myscript.js</file>
-            <file>file:/C:/xampp/htdocs/sp_project_gr04/Adapter/ProductAdapter.php</file>
+            <file>file:/C:/xampp/htdocs/SP_PROJECT/controller/search_controller.php</file>
+            <file>file:/C:/xampp/htdocs/SP_PROJECT/controller/payment_controller.php</file>
+            <file>file:/C:/xampp/htdocs/SP_PROJECT/view/receipt_html.php</file>
+            <file>file:/C:/xampp/htdocs/SP_PROJECT/view/searched_cate_html.php</file>
+            <file>file:/C:/xampp/htdocs/SP_PROJECT/view/js/myscript.js</file>
+            <file>file:/C:/xampp/htdocs/SP_PROJECT/model/order.php</file>
+            <file>file:/C:/xampp/htdocs/SP_PROJECT/view/paybypaypal_html.php</file>
         </group>
     </open-files>
 </project-private>
